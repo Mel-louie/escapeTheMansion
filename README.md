@@ -2,12 +2,12 @@ So. 1st real Game Boy game. Let's go!
 
 <a href="./toDo.md">To Do</a><br>
 
-### How launch my 'game' (not so much a game for now :) )
+### How launch my game
 
 <b>To lauch:</b>
 
 ````
-git clone https://github.com/Mel-louie/Gameboy_GBDK-N.git
+git clone https://github.com/Mel-louie/escapeTheMansion.git
 cd 'to-the-directory'
 make
 ````
@@ -26,6 +26,10 @@ make fclean
 ````
 
 ### Ressources
+
+<h6><a href="https://github.com/Mel-louie/escapeTheMansion/tree/master/musics#readme">Music for Game Boy</a></h6>
+
+<h6><a href="https://github.com/Mel-louie/escapeTheMansion/blob/master/escapeTheMansion-HTML/README.md">Deployed for the web</a> thanks to Chris Maltby and his fantastic <a href=https://www.gbstudio.dev/>GB Studio</a></h6>
 
 <h6>Tutorials</h6>
 <a href="https://blog.flozz.fr/category/gameboy.html">Tuto to gbdk-n</a> in French by <a href="https://github.com/flozz">@flozz</a><br>
