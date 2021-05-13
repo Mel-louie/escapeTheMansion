@@ -4,10 +4,10 @@
 
 
 :radio_button: hall with a scroll (! the player moves with the screen limits)<br>
-:radio_button: after splash screen: credits<br><br>
 :radio_button: after splash screen: cinematic<br><br>
 :radio_button: animer sprite joueur<br><br>
 
+:ballot_box_with_check: after splash screen: credits<br><br>
 :ballot_box_with_check: creat and update the readme with sound credits (gbt-player + the sound)<br>
 :ballot_box_with_check: add a player<br>
 :ballot_box_with_check: clean the directories<br><br>
