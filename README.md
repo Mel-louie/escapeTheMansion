@@ -6,7 +6,7 @@ NB: some of the doc or ressources are in French, but the game and the code are i
 ### How launch my game
 
 <b>To lauch:</b>
-
+!macOS ok, linux maybe
 ````
 git clone https://github.com/Mel-louie/escapeTheMansion.git
 cd 'to-the-directory'
