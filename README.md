@@ -1,4 +1,5 @@
 So. 1st real Game Boy game. Let's go!
+NB: some of the doc or ressources are in French, but the game and the code are in English.
 
 <a href="./toDo.md">To Do</a><br>
 

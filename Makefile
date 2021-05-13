@@ -27,14 +27,15 @@ _END		= "\033[0m"
 ################
 
 all:
-	@cp musics/mod2gbt . 
-	@./mod2gbt musics/mainTheme.mod song 2
-	@rm mod2gbt
+#	@cp musics/mod2gbt . 
+#	@./mod2gbt musics/mainTheme.mod song 2
+#	@rm mod2gbt
 
 	@echo $(_BLUE)"Building ... "$(_YELLOW)
 
 	@./gbdk2020/bin/lcc -Wa-l -Wl-m -Wl-j -DUSE_SFR_FOR_REG -c -o main.o src/main.c
 	@./gbdk2020/bin/lcc -Wa-l -Wl-m -Wl-j -DUSE_SFR_FOR_REG -c -o fire.o src/fire.c
+	@./gbdk2020/bin/lcc -Wa-l -Wl-m -Wl-j -DUSE_SFR_FOR_REG -c -o player.o src/player.c
 	@./gbdk2020/bin/lcc -Wa-l -Wl-m -Wl-j -DUSE_SFR_FOR_REG -c -o game.o src/game.c
 	@./gbdk2020/bin/lcc -Wa-l -Wl-m -Wl-j -DUSE_SFR_FOR_REG -c -o kitchen.o src/kitchen.c
 	@./gbdk2020/bin/lcc -Wa-l -Wl-m -Wl-j -DUSE_SFR_FOR_REG -c -o kitchenmap.o src/kitchenmap.c
@@ -55,7 +56,7 @@ all:
 	@./gbdk2020/bin/lcc -Wa-l -Wl-m -Wl-j -DUSE_SFR_FOR_REG -c -o gbt_player_bank1.o musics/gbt_player_bank1.s
 
 # compilation, work fine even if a wild warning 115 appears
-	@./gbdk2020/bin/lcc -Wa-l -Wm-yc -Wl-m -Wl-j -o escapeTheMansion.gb main.o  titleMapScreen.o tileset_splashscreen.o   tilemap_splashscreen.o tileset_font.o titleScreen.o screens.o utils.o texts.o output.o gbt_player.o gbt_player_bank1.o sprites.o maps.o kitchenmap.o kitchen.o game.o fire.o
+	@./gbdk2020/bin/lcc -Wa-l -Wm-yc -Wl-m -Wl-j -o escapeTheMansion.gb main.o  titleMapScreen.o tileset_splashscreen.o   tilemap_splashscreen.o tileset_font.o titleScreen.o screens.o utils.o texts.o output.o gbt_player.o gbt_player_bank1.o sprites.o maps.o kitchenmap.o kitchen.o game.o fire.o player.o
 
 	@cp escapeTheMansion.gb escapeTheMansion-HTML/rom/game.gb
 	@echo $(_GREEN)"Done!"$(_END)

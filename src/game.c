@@ -22,10 +22,10 @@ void	animate_fire(void) {
 		set_sprite_tile(1, 2);
 }
 
-void	game(s *fire) {
+void	game(s *fire, s*pl) {
 
 	if (!fire->o)
-		init_sprites(fire);
+		init_sprites(fire, pl);
 	animate_fire();
 }
 

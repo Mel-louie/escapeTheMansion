@@ -4,7 +4,7 @@
 #define _FIRE_H
 
 extern const UINT8 FIRE[];
-#define FIRE_TILE_COUNT 36
+#define FIRE_TILE_COUNT 24
 
 
 #endif

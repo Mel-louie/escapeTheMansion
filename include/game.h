@@ -25,6 +25,7 @@
 #include "kitchenmap.h"
 
 #include "fire.h"
+#include "player.h"
 
 // sprite's sate
 typedef struct	sprites
@@ -76,8 +77,8 @@ void	init_map(void);
 /* @void	game(void);				  */
 /*									  */
 /* engine, serious stuffs begin here  */
-void	game(s *fire);
+void	game(s *fire, s *pl);
 
-void	init_sprites(s *fire);
+void	init_sprites(s *fire, s* pl);
 
 #endif

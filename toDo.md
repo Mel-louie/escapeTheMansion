@@ -8,6 +8,8 @@
 :radio_button: add a player<br>
 :radio_button: after splash screen: credit<br><br>
 :radio_button: clean the directories<br><br>
+:radio_button: refaire la buche avec les rondins trouvés<br><br>
+:radio_button: animer sprite joueur<br><br>
 
 
 <h3>:green_book:random notes</h3>
