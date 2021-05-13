@@ -1,0 +1,49 @@
+XL3
+H 7 areas 6 global symbols
+M utils
+O -mgbz80
+S .__.ABS. Def000000
+S _joypad Ref000000
+S _wait_vbl_done Ref000000
+S _gbt_update Ref000000
+A _CODE size 36 flags 0 addr 0
+S _perform_delay Def000000
+S _perform_delay_joypad Def000012
+A _DATA size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 00
+T 00 00 00 0E 00
+R 00 00 00 00
+T 02 00 00
+R 00 00 00 00
+T 02 00 00 79 F8 02 96 D0 0C CD 00 00 C5 CD 00 00
+R 00 00 00 00 02 0A 02 00 02 0E 03 00
+T 0F 00 00 C1 18 F0
+R 00 00 00 00
+T 12 00 00
+R 00 00 00 00
+T 12 00 00 0E 00
+R 00 00 00 00
+T 14 00 00
+R 00 00 00 00
+T 14 00 00 79 F8 02 96 30 19 0C CD 00 00 7B FE 80
+R 00 00 00 00 02 0B 01 00
+T 21 00 00 28 04 FE 10 20 02
+R 00 00 00 00
+T 27 00 00
+R 00 00 00 00
+T 27 00 00 5F C9
+R 00 00 00 00
+T 29 00 00
+R 00 00 00 00
+T 29 00 00 CD 00 00 C5 CD 00 00 C1 18 E1
+R 00 00 00 00 02 04 02 00 02 08 03 00
+T 33 00 00
+R 00 00 00 00
+T 33 00 00 1E 00 C9
+R 00 00 00 00

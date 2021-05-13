@@ -1,0 +1,77 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.0.4 #11941 (Mac OS X x86_64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module maps
+                                      6 	.optsdcc -mgbz80
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _set_bkg_tiles
+                                     12 	.globl _set_bkg_data
+                                     13 	.globl _init_map
+                                     14 ;--------------------------------------------------------
+                                     15 ; special function registers
+                                     16 ;--------------------------------------------------------
+                                     17 ;--------------------------------------------------------
+                                     18 ; ram data
+                                     19 ;--------------------------------------------------------
+                                     20 	.area _DATA
+                                     21 ;--------------------------------------------------------
+                                     22 ; absolute external ram data
+                                     23 ;--------------------------------------------------------
+                                     24 	.area _DABS (ABS)
+                                     25 ;--------------------------------------------------------
+                                     26 ; global & static initialisations
+                                     27 ;--------------------------------------------------------
+                                     28 	.area _HOME
+                                     29 	.area _GSINIT
+                                     30 	.area _GSFINAL
+                                     31 	.area _GSINIT
+                                     32 ;--------------------------------------------------------
+                                     33 ; Home
+                                     34 ;--------------------------------------------------------
+                                     35 	.area _HOME
+                                     36 	.area _HOME
+                                     37 ;--------------------------------------------------------
+                                     38 ; code
+                                     39 ;--------------------------------------------------------
+                                     40 	.area _CODE
+                                     41 ;src/maps.c:9: void		init_map(void) {
+                                     42 ;	---------------------------------
+                                     43 ; Function init_map
+                                     44 ; ---------------------------------
+      000000                         45 _init_map::
+                                     46 ;src/maps.c:11: set_bkg_data(0, TILESET_KITCHEN_TILE_COUNT, TILESET_KITCHEN);
+      000000 21r00r00                47 	ld	hl, #_TILESET_KITCHEN
+      000003 E5                      48 	push	hl
+      000004 3E 4B                   49 	ld	a, #0x4b
+      000006 F5                      50 	push	af
+      000007 33                      51 	inc	sp
+      000008 AF                      52 	xor	a, a
+      000009 F5                      53 	push	af
+      00000A 33                      54 	inc	sp
+      00000B CDr00r00                55 	call	_set_bkg_data
+      00000E E8 04                   56 	add	sp, #4
+                                     57 ;src/maps.c:12: set_bkg_tiles(0, 0, TILEMAP_KITCHEN_WIDTH, TILEMAP_KITCHEN_HEIGHT, TILEMAP_KITCHEN);
+      000010 21r00r00                58 	ld	hl, #_TILEMAP_KITCHEN
+      000013 E5                      59 	push	hl
+      000014 11 14 12                60 	ld	de, #0x1214
+      000017 D5                      61 	push	de
+      000018 AF                      62 	xor	a, a
+      000019 F5                      63 	push	af
+      00001A 33                      64 	inc	sp
+      00001B AF                      65 	xor	a, a
+      00001C F5                      66 	push	af
+      00001D 33                      67 	inc	sp
+      00001E CDr00r00                68 	call	_set_bkg_tiles
+      000021 E8 06                   69 	add	sp, #6
+                                     70 ;src/maps.c:13: SHOW_BKG;
+      000023 F0r00                   71 	ldh	a, (_LCDC_REG+0)
+      000025 F6 01                   72 	or	a, #0x01
+      000027 E0r00                   73 	ldh	(_LCDC_REG+0),a
+                                     74 ;src/maps.c:14: }
+      000029 C9                      75 	ret
+                                     76 	.area _CODE
+                                     77 	.area _CABS (ABS)

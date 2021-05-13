@@ -1,0 +1,158 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.0.4 #11941 (Mac OS X x86_64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module main
+                                      6 	.optsdcc -mgbz80
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _main
+                                     12 	.globl _game
+                                     13 	.globl _init_game
+                                     14 	.globl _gbt_update
+                                     15 	.globl _gbt_loop
+                                     16 	.globl _gbt_play
+                                     17 	.globl _wait_vbl_done
+                                     18 	.globl _set_interrupts
+                                     19 	.globl _disable_interrupts
+                                     20 	.globl _enable_interrupts
+                                     21 	.globl _set_sprite_palette
+                                     22 	.globl _set_bkg_palette
+                                     23 	.globl _palette_table
+                                     24 ;--------------------------------------------------------
+                                     25 ; special function registers
+                                     26 ;--------------------------------------------------------
+                                     27 ;--------------------------------------------------------
+                                     28 ; ram data
+                                     29 ;--------------------------------------------------------
+                                     30 	.area _DATA
+                                     31 ;--------------------------------------------------------
+                                     32 ; absolute external ram data
+                                     33 ;--------------------------------------------------------
+                                     34 	.area _DABS (ABS)
+                                     35 ;--------------------------------------------------------
+                                     36 ; global & static initialisations
+                                     37 ;--------------------------------------------------------
+                                     38 	.area _HOME
+                                     39 	.area _GSINIT
+                                     40 	.area _GSFINAL
+                                     41 	.area _GSINIT
+                                     42 ;--------------------------------------------------------
+                                     43 ; Home
+                                     44 ;--------------------------------------------------------
+                                     45 	.area _HOME
+                                     46 	.area _HOME
+                                     47 ;--------------------------------------------------------
+                                     48 ; code
+                                     49 ;--------------------------------------------------------
+                                     50 	.area _CODE
+                                     51 ;src/main.c:23: void	main(void) {
+                                     52 ;	---------------------------------
+                                     53 ; Function main
+                                     54 ; ---------------------------------
+      000000                         55 _main::
+      000000 E8 F0                   56 	add	sp, #-16
+                                     57 ;src/main.c:25: set_bkg_palette(0, 1, &palette_table[0]);
+      000002 21r6Br00                58 	ld	hl, #_palette_table
+      000005 E5                      59 	push	hl
+      000006 3E 01                   60 	ld	a, #0x01
+      000008 F5                      61 	push	af
+      000009 33                      62 	inc	sp
+      00000A AF                      63 	xor	a, a
+      00000B F5                      64 	push	af
+      00000C 33                      65 	inc	sp
+      00000D CDr00r00                66 	call	_set_bkg_palette
+      000010 E8 04                   67 	add	sp, #4
+                                     68 ;src/main.c:26: set_sprite_palette(0, 1, &palette_table[8]);
+      000012 21r7Br00                69 	ld	hl, #(_palette_table + 0x0010)
+      000015 E5                      70 	push	hl
+      000016 3E 01                   71 	ld	a, #0x01
+      000018 F5                      72 	push	af
+      000019 33                      73 	inc	sp
+      00001A AF                      74 	xor	a, a
+      00001B F5                      75 	push	af
+      00001C 33                      76 	inc	sp
+      00001D CDr00r00                77 	call	_set_sprite_palette
+      000020 E8 04                   78 	add	sp, #4
+                                     79 ;src/main.c:29: disable_interrupts();
+      000022 CDr00r00                80 	call	_disable_interrupts
+                                     81 ;src/main.c:30: gbt_play(song_Data, 2, 7);
+      000025 11 02 07                82 	ld	de, #0x0702
+      000028 D5                      83 	push	de
+      000029 21r00r00                84 	ld	hl, #_song_Data
+      00002C E5                      85 	push	hl
+      00002D CDr00r00                86 	call	_gbt_play
+      000030 E8 04                   87 	add	sp, #4
+                                     88 ;src/main.c:31: gbt_loop(0);
+      000032 AF                      89 	xor	a, a
+      000033 F5                      90 	push	af
+      000034 33                      91 	inc	sp
+      000035 CDr00r00                92 	call	_gbt_loop
+      000038 33                      93 	inc	sp
+                                     94 ;src/main.c:33: set_interrupts(VBL_IFLAG);
+      000039 3E 01                   95 	ld	a, #0x01
+      00003B F5                      96 	push	af
+      00003C 33                      97 	inc	sp
+      00003D CDr00r00                98 	call	_set_interrupts
+      000040 33                      99 	inc	sp
+                                    100 ;src/main.c:34: enable_interrupts();
+      000041 CDr00r00               101 	call	_enable_interrupts
+                                    102 ;src/main.c:43: fire.o = 0;
+      000044 F8 00                  103 	ldhl	sp,	#0
+      000046 4D                     104 	ld	c, l
+      000047 44                     105 	ld	b, h
+      000048 21 07 00               106 	ld	hl, #0x0007
+      00004B 09                     107 	add	hl, bc
+      00004C 36 00                  108 	ld	(hl), #0x00
+                                    109 ;src/main.c:44: init_game();
+      00004E C5                     110 	push	bc
+      00004F CDr00r00               111 	call	_init_game
+      000052 C1                     112 	pop	bc
+                                    113 ;src/main.c:45: while (1) {
+      000053                        114 00102$:
+                                    115 ;src/main.c:46: wait_vbl_done();
+      000053 CDr00r00               116 	call	_wait_vbl_done
+                                    117 ;src/main.c:47: game(&fire, &pl);
+      000056 F8 08                  118 	ldhl	sp,	#8
+      000058 59                     119 	ld	e, c
+      000059 50                     120 	ld	d, b
+      00005A C5                     121 	push	bc
+      00005B E5                     122 	push	hl
+      00005C D5                     123 	push	de
+      00005D CDr00r00               124 	call	_game
+      000060 E8 04                  125 	add	sp, #4
+      000062 CDr00r00               126 	call	_gbt_update
+      000065 C1                     127 	pop	bc
+      000066 18 EB                  128 	jr	00102$
+                                    129 ;src/main.c:52: }
+      000068 E8 10                  130 	add	sp, #16
+      00006A C9                     131 	ret
+      00006B                        132 _palette_table:
+      00006B F9 5F                  133 	.dw #0x5ff9
+      00006D B3 3F                  134 	.dw #0x3fb3
+      00006F 09 42                  135 	.dw #0x4209
+      000071 84 18                  136 	.dw #0x1884
+      000073 F9 5F                  137 	.dw #0x5ff9
+      000075 F9 5F                  138 	.dw #0x5ff9
+      000077 09 42                  139 	.dw #0x4209
+      000079 84 18                  140 	.dw #0x1884
+      00007B BF 7F                  141 	.dw #0x7fbf
+      00007D BF 7F                  142 	.dw #0x7fbf
+      00007F B4 39                  143 	.dw #0x39b4
+      000081 65 14                  144 	.dw #0x1465
+      000083 B3 3F                  145 	.dw #0x3fb3
+      000085 B3 3F                  146 	.dw #0x3fb3
+      000087 09 42                  147 	.dw #0x4209
+      000089 84 18                  148 	.dw #0x1884
+      00008B 09 42                  149 	.dw #0x4209
+      00008D 09 42                  150 	.dw #0x4209
+      00008F 09 42                  151 	.dw #0x4209
+      000091 84 18                  152 	.dw #0x1884
+      000093 84 18                  153 	.dw #0x1884
+      000095 84 18                  154 	.dw #0x1884
+      000097 84 18                  155 	.dw #0x1884
+      000099 84 18                  156 	.dw #0x1884
+                                    157 	.area _CODE
+                                    158 	.area _CABS (ABS)

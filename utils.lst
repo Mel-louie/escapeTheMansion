@@ -1,0 +1,103 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.0.4 #11941 (Mac OS X x86_64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module utils
+                                      6 	.optsdcc -mgbz80
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _gbt_update
+                                     12 	.globl _wait_vbl_done
+                                     13 	.globl _joypad
+                                     14 	.globl _perform_delay
+                                     15 	.globl _perform_delay_joypad
+                                     16 ;--------------------------------------------------------
+                                     17 ; special function registers
+                                     18 ;--------------------------------------------------------
+                                     19 ;--------------------------------------------------------
+                                     20 ; ram data
+                                     21 ;--------------------------------------------------------
+                                     22 	.area _DATA
+                                     23 ;--------------------------------------------------------
+                                     24 ; absolute external ram data
+                                     25 ;--------------------------------------------------------
+                                     26 	.area _DABS (ABS)
+                                     27 ;--------------------------------------------------------
+                                     28 ; global & static initialisations
+                                     29 ;--------------------------------------------------------
+                                     30 	.area _HOME
+                                     31 	.area _GSINIT
+                                     32 	.area _GSFINAL
+                                     33 	.area _GSINIT
+                                     34 ;--------------------------------------------------------
+                                     35 ; Home
+                                     36 ;--------------------------------------------------------
+                                     37 	.area _HOME
+                                     38 	.area _HOME
+                                     39 ;--------------------------------------------------------
+                                     40 ; code
+                                     41 ;--------------------------------------------------------
+                                     42 	.area _CODE
+                                     43 ;src/utils.c:9: void	perform_delay(UINT8 time) {
+                                     44 ;	---------------------------------
+                                     45 ; Function perform_delay
+                                     46 ; ---------------------------------
+      000000                         47 _perform_delay::
+                                     48 ;src/utils.c:12: while (i++ < time) {
+      000000 0E 00                   49 	ld	c, #0x00
+      000002                         50 00101$:
+      000002 79                      51 	ld	a, c
+      000003 F8 02                   52 	ldhl	sp,	#2
+      000005 96                      53 	sub	a, (hl)
+      000006 D0                      54 	ret	NC
+      000007 0C                      55 	inc	c
+                                     56 ;src/utils.c:13: wait_vbl_done();
+      000008 CDr00r00                57 	call	_wait_vbl_done
+                                     58 ;src/utils.c:15: gbt_update();
+      00000B C5                      59 	push	bc
+      00000C CDr00r00                60 	call	_gbt_update
+      00000F C1                      61 	pop	bc
+                                     62 ;src/utils.c:17: }
+      000010 18 F0                   63 	jr	00101$
+                                     64 ;src/utils.c:19: UINT8	perform_delay_joypad(UINT8 time) {
+                                     65 ;	---------------------------------
+                                     66 ; Function perform_delay_joypad
+                                     67 ; ---------------------------------
+      000012                         68 _perform_delay_joypad::
+                                     69 ;src/utils.c:23: while (i++ < time) {
+      000012 0E 00                   70 	ld	c, #0x00
+      000014                         71 00104$:
+      000014 79                      72 	ld	a, c
+      000015 F8 02                   73 	ldhl	sp,	#2
+      000017 96                      74 	sub	a, (hl)
+      000018 30 19                   75 	jr	NC, 00106$
+      00001A 0C                      76 	inc	c
+                                     77 ;src/utils.c:24: keys = joypad();
+      00001B CDr00r00                78 	call	_joypad
+      00001E 7B                      79 	ld	a, e
+                                     80 ;src/utils.c:25: if (keys == J_START || keys == J_A)
+      00001F FE 80                   81 	cp	a, #0x80
+      000021 28 04                   82 	jr	Z, 00101$
+      000023 FE 10                   83 	cp	a, #0x10
+      000025 20 02                   84 	jr	NZ, 00102$
+      000027                         85 00101$:
+                                     86 ;src/utils.c:26: return (keys);
+      000027 5F                      87 	ld	e, a
+      000028 C9                      88 	ret
+      000029                         89 00102$:
+                                     90 ;src/utils.c:27: wait_vbl_done();
+      000029 CDr00r00                91 	call	_wait_vbl_done
+                                     92 ;src/utils.c:29: gbt_update();
+      00002C C5                      93 	push	bc
+      00002D CDr00r00                94 	call	_gbt_update
+      000030 C1                      95 	pop	bc
+      000031 18 E1                   96 	jr	00104$
+      000033                         97 00106$:
+                                     98 ;src/utils.c:31: return (0);
+      000033 1E 00                   99 	ld	e, #0x00
+                                    100 ;src/utils.c:32: }
+      000035 C9                     101 	ret
+                                    102 	.area _CODE
+                                    103 	.area _CABS (ABS)
