@@ -4,14 +4,14 @@
 
 
 :radio_button: hall with a scroll (! the player moves with the screen limits)<br>
-:radio_button: after splash screen: cinematic<br><br>
+:radio_button: after splash screen: cinematic<br>
 :radio_button: animer sprite joueur<br><br>
 
-:ballot_box_with_check: after splash screen: credits<br><br>
+:ballot_box_with_check: after splash screen: credits<br>
 :ballot_box_with_check: creat and update the readme with sound credits (gbt-player + the sound)<br>
 :ballot_box_with_check: add a player<br>
-:ballot_box_with_check: clean the directories<br><br>
-:ballot_box_with_check: refaire la buche avec les rondins trouvés<br><br>
+:ballot_box_with_check: clean the directories<br>
+:ballot_box_with_check: refaire la buche avec les rondins trouvés<br>
 
 <h3>:green_book:random notes</h3>
 To have the right shades of color for a sprite (black, gray, white, and light gray transparent):<br>
