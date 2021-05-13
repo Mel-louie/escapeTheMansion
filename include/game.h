@@ -20,6 +20,8 @@
 #include "titleMapScreen.h"
 #include "tilemap_splashscreen.h"
 #include "tileset_splashscreen.h"
+#include "creditsScreen.h"
+#include "creditsmap.h"
 
 #include "kitchen.h"
 #include "kitchenmap.h"
