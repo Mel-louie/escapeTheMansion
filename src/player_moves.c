@@ -88,6 +88,7 @@ void	player_init(s *pl) {
 		pl->player_direction = PLAYER_DIRECTION_RIGHT;
 			move_player(+1, 0, pl);
 	}
+perform_delay(5);
 /*	if (joypad() & J_A) {
 		interact(pl);
 	}*/

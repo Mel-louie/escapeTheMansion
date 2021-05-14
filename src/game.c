@@ -12,7 +12,7 @@ void	game(s *fire, s*pl) {
 	if (!pl->o)
 		init_sprites(fire, pl);
 
-	if (fire->animX <= 40 )
+	if (fire->animX <= 46)
 	{
 		set_sprite_tile(2, fire->animX = (fire->animX + 4));
 		set_sprite_tile(3, fire->animY = (fire->animY + 4));
@@ -24,7 +24,6 @@ void	game(s *fire, s*pl) {
 		set_sprite_tile(3, fire->animY);
 	}
 	player_init(pl);
-	perform_delay(5);
 }
 
 void	init_game(void) {

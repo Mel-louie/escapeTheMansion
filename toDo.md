@@ -5,7 +5,9 @@
 
 :radio_button: hall with a scroll (! the player moves with the screen limits)<br>
 :radio_button: after splash screen: cinematic<br>
-:radio_button: animer sprite joueur<br><br>
+:radio_button: bordures sprite joueur<br><br>
+:radio_button: animer la piece<br><br>
+:radio_button: refacto notamment le feu qui est un sprite qui reste sur la map1<br><br>
 
 :ballot_box_with_check: after splash screen: credits<br>
 :ballot_box_with_check: creat and update the readme with sound credits (gbt-player + the sound)<br>
