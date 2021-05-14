@@ -6,27 +6,25 @@
 
 #include "../include/game.h"
 
-void	animate_fire(void) {
-
-		perform_delay(15);
-		set_sprite_tile(0, 4);
-		set_sprite_tile(1, 4+2);
-		perform_delay(15);
-		set_sprite_tile(0, 8);
-		set_sprite_tile(1, 8+2);
-		perform_delay(15);
-		set_sprite_tile(0, 12);
-		set_sprite_tile(1, 12+2);
-		perform_delay(15);
-		set_sprite_tile(0, 0);
-		set_sprite_tile(1, 2);
-}
 
 void	game(s *fire, s*pl) {
 
-	if (!fire->o)
+	if (!pl->o)
 		init_sprites(fire, pl);
-	animate_fire();
+
+	if (fire->animX <= 40 )
+	{
+		set_sprite_tile(2, fire->animX = (fire->animX + 4));
+		set_sprite_tile(3, fire->animY = (fire->animY + 4));
+	}
+	else {
+		fire->animX = 36;
+		fire->animY = fire->animX + 2;
+		set_sprite_tile(2, fire->animX);
+		set_sprite_tile(3, fire->animY);
+	}
+	player_init(pl);
+	perform_delay(5);
 }
 
 void	init_game(void) {

@@ -38,6 +38,8 @@ typedef struct	sprites
 	UINT8	sprite_animation_frame;
 	UINT8	frame_skip;
 	UBYTE	o;
+	UBYTE	animX;
+	UBYTE	animY;
 }				s;
 
 // Values must be in the range 0-31! For example, CGB_PAL(31, 31, 31) is white, CGB_PAL(0, 0, 0) is black, and CGB_PAL(0, 31, 0) is green
@@ -82,5 +84,6 @@ void	init_map(void);
 void	game(s *fire, s *pl);
 
 void	init_sprites(s *fire, s* pl);
+void	player_init(s *pl);
 
 #endif

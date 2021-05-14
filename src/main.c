@@ -20,7 +20,7 @@ void	main(void) {
 
 	set_bkg_palette(0, 1, &palette_table[0]);
 	set_sprite_palette(0, 1, &palette_table[8]);
-	splash_screen();
+//	splash_screen();
 
 	disable_interrupts();
 	gbt_play(song_Data, 2, 7);
@@ -30,18 +30,17 @@ void	main(void) {
 	enable_interrupts();
 
 	HIDE_BKG;
-	title_screen();
-	clear_title_screen();
+//	title_screen();
+//	clear_title_screen();
 
 	s	fire;
 	s	pl;
 
-	fire.o = 0;
+	pl.o = 0;
 	init_game();
 	while (1) {
 		wait_vbl_done();
 		game(&fire, &pl);
         gbt_update(); // This will change to ROM bank 1.
-
 	}
 }
