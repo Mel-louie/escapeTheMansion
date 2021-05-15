@@ -84,6 +84,7 @@ void	init_map(void);
 void	game(s *fire, s *pl);
 
 void	init_sprites(s *fire, s* pl);
-void	player_init(s *pl);
+void	player_init(s *pl, s *fire);
+void	anim_fire(s *fire);
 
 #endif

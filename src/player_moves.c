@@ -19,7 +19,7 @@ UINT8 PLAYER_ANIMATION_SIDE[] = {24, 28, 24, 32};
 UINT8 PLAYER_ANIMATION_UP[] = {12, 16, 12, 20};
 UINT8 PLAYER_ANIMATION_DOWN[] = {0, 4, 0, 8};
 
-void	move_player(INT8 dx, INT8 dy, s *pl) {
+void	move_player(INT8 dx, INT8 dy, s *pl, s *fire) {
 
 	pl->sprite_pos_world[0] += dx;
 	pl->sprite_pos_world[1] += dy;
@@ -29,9 +29,11 @@ void	move_player(INT8 dx, INT8 dy, s *pl) {
 	// move player
 		pl->sprite_pos_screen[0] += dx;
 		pl->sprite_pos_screen[1] += dy;
+	
+		anim_fire(fire);
+
 		move_sprite(0, pl->sprite_pos_screen[0], pl->sprite_pos_screen[1]);
 		move_sprite(1, pl->sprite_pos_screen[0] + 8, pl->sprite_pos_screen[1]);
-		perform_delay(1);
 
 		// manage animation
 		pl->frame_skip -= 1;
@@ -70,27 +72,25 @@ void	move_player(INT8 dx, INT8 dy, s *pl) {
 	}
 }
 
-void	player_init(s *pl) {
+void	player_init(s *pl, s *fire) {
 
 	if (joypad() & J_UP) {
 		pl->player_direction = PLAYER_DIRECTION_UP;		// init the direction according to the joypad
-			move_player(0, -1, pl);						// increment or decrement the square of the grid where is the player,
+			move_player(0, -1, pl, fire);						// increment or decrement the square of the grid where is the player,
 	}												// here, -1 square on y;
 	else if (joypad() & J_DOWN) {					// if chose if instead of else if: moving in diagonal
 		pl->player_direction = PLAYER_DIRECTION_DOWN;
-			move_player(0, +1, pl);
+			move_player(0, +1, pl, fire);
 	}
 	else if (joypad() & J_LEFT) {
 		pl->player_direction = PLAYER_DIRECTION_LEFT;
-			move_player(-1, 0, pl);
+			move_player(-1, 0, pl, fire);
 	}
 	else if (joypad() & J_RIGHT) {
 		pl->player_direction = PLAYER_DIRECTION_RIGHT;
-			move_player(+1, 0, pl);
+			move_player(+1, 0, pl, fire);
 	}
-perform_delay(5);
-/*	if (joypad() & J_A) {
-		interact(pl);
-	}*/
-	
+	else {
+		anim_fire(fire);
+	}
 }

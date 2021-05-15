@@ -6,7 +6,22 @@
 
 #include "../include/game.h"
 
+void	anim_fire(s *fire) {
 
+	if (fire->animX <= 57)
+	{
+		set_sprite_tile(2, fire->animX = (fire->animX + 4));
+		set_sprite_tile(3, fire->animY = (fire->animY + 4));
+		perform_delay(1);
+	}
+	else {
+		fire->animX = 36;
+		fire->animY = fire->animX + 2;
+		set_sprite_tile(2, fire->animX);
+		set_sprite_tile(3, fire->animY);
+		perform_delay(1);
+	}	
+}
 
 void	init_fire(s *fire) {
 
