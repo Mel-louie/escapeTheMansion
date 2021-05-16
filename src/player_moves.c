@@ -34,6 +34,7 @@ void	move_player(INT8 dx, INT8 dy, s *pl, s *fire) {
 
 		move_sprite(0, pl->sprite_pos_screen[0], pl->sprite_pos_screen[1]);
 		move_sprite(1, pl->sprite_pos_screen[0] + 8, pl->sprite_pos_screen[1]);
+	//	wait_vbl_done();
 
 		// manage animation
 		pl->frame_skip -= 1;
