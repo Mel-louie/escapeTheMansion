@@ -19,6 +19,9 @@ UINT8 PLAYER_ANIMATION_SIDE[] = {24, 28, 24, 32};
 UINT8 PLAYER_ANIMATION_UP[] = {12, 16, 12, 20};
 UINT8 PLAYER_ANIMATION_DOWN[] = {0, 4, 0, 8};
 
+UINT8 bkg_XPosition = 0;
+UINT8 bkg_YPosition = 0;
+
 void	move_player(INT8 dx, INT8 dy, s *pl, s *fire) {
 
 	pl->sprite_pos_world[0] += dx;
@@ -26,7 +29,20 @@ void	move_player(INT8 dx, INT8 dy, s *pl, s *fire) {
 
 
 	for (UINT8 delta = 8 ; delta ; delta--) {	// moving 8 squares by 8 squares, maybe change in 16x16
+
+	 // move camera 
+        if ((bkg_XPosition && dx == -1 && pl->sprite_pos_screen[0] == 2 * 16) ||
+            (bkg_XPosition < (16 - 10) * 16 && dx == 1 && pl->sprite_pos_screen[0] == 8 * 16)) {
+            bkg_XPosition += dx;
+            move_bkg(bkg_XPosition, 0);
+			}
+		else if ((bkg_YPosition && dy == -1 && pl->sprite_pos_screen[1] == 2 * 16) ||
+            (bkg_YPosition < (16 - 10) * 16 && dy == 1 && pl->sprite_pos_screen[1] == 8 * 16)) {
+            bkg_YPosition += dy;
+            move_bkg(0, bkg_YPosition);
+			}
 	// move player
+		else {
 		pl->sprite_pos_screen[0] += dx;
 		pl->sprite_pos_screen[1] += dy;
 	
@@ -35,6 +51,7 @@ void	move_player(INT8 dx, INT8 dy, s *pl, s *fire) {
 		move_sprite(0, pl->sprite_pos_screen[0], pl->sprite_pos_screen[1]);
 		move_sprite(1, pl->sprite_pos_screen[0] + 8, pl->sprite_pos_screen[1]);
 	//	wait_vbl_done();
+	}
 
 		// manage animation
 		pl->frame_skip -= 1;
