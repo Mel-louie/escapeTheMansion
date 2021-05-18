@@ -40,25 +40,16 @@ UINT8	can_player_move(INT8 dx, INT8 dy, s *pl) {
 // don't exit the screen
 // ! it's not in pixel, but in square of the grid, one by one
 	if ((pl->sprite_pos_world[0] + dx < 1) ||
-		(pl->sprite_pos_world[0] + dx == 20) ||
+		(pl->sprite_pos_world[0] + dx == 36) ||
 		(pl->sprite_pos_world[1] + dy < 2) ||
 		(pl->sprite_pos_world[1] + dy == 18))
 		return (0);
 
 // return a tile where the player can walk
-	return (tile == 0x2E || tile == 0x2F);
-//	return (1);
+//	return (tile == 0x2E || tile == 0x2F);
+	return (1);
 }
 
-	 // move camera x
-/*
-if ((bkg_XPosition && dx == -1 && pl->sprite_pos_screen[0] == 2 * 8) ||
-			(bkg_XPosition < (16 - 10) * 16 && dx == 1 && pl->sprite_pos_screen[0] == 8 * 16)) {
-				bkg_XPosition += dx * 124;
-				move_bkg(bkg_XPosition, 0);
-				dx += dx *16;
-			}
-*/
 
 void	move_player(INT8 dx, INT8 dy, s *pl, s *fire) {
 
@@ -74,6 +65,15 @@ void	move_player(INT8 dx, INT8 dy, s *pl, s *fire) {
 	}
 
 	for (UINT8 delta = 8 ; delta ; delta--) {	// moving 8 squares by 8 squares, maybe change in 16x16
+
+		// move camera x
+
+		if ((bkg_XPosition && dx == -1 && pl->sprite_pos_screen[0] == 2 * 8) ||
+			(bkg_XPosition < (16 - 10) * 16 && dx == 1 && pl->sprite_pos_screen[0] == 8 * 16)) {
+				bkg_XPosition += dx * 124;
+				move_bkg(bkg_XPosition, 0);
+				dx += dx *16;
+		}
 
 		if (!flag) {
 		// move player
