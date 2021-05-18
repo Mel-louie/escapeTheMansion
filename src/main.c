@@ -30,7 +30,7 @@ void	main(void) {
 	enable_interrupts();
 
 	HIDE_BKG;
-	//title_screen();
+	title_screen();
 	clear_title_screen();
 
 	s	fire;

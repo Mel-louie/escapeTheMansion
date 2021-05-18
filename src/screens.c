@@ -132,7 +132,7 @@ void	title_screen(void) {
 	// TEXT
 	text_load_font(1);
 	move_win(0, 16*8);
-	text_putstr_win(0, 0, "press start");
+	text_putstr_title(0, 0, "     press start     \n                   ");
 	// show text
 	SHOW_WIN;
 	// blinking text

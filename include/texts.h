@@ -32,5 +32,6 @@
 void	text_load_font(UINT8 code);
 void	text_putchar_win(UINT8 x, UINT8 y, unsigned char c); // pass char to window
 void	text_putstr_win(UINT8 x, UINT8 y, unsigned char *str);
+void	text_putstr_title(UINT8 x, UINT8 y, unsigned char *str);
 
 #endif

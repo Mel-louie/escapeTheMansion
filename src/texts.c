@@ -67,6 +67,24 @@ void	text_putchar_win(UINT8 x, UINT8 y, unsigned char c) {
 	set_win_tiles(x, y, 1, 1, &tile);
 }
 
+void	text_putstr_title(UINT8 x, UINT8 y, unsigned char *str) {
+	UINT8 i = 0;
+	UINT8 tmpX = x;
+	UINT8 tmpY = y;
+
+	while (str[i]) {
+		if (str[i] == '\n') {
+			tmpY++;
+			tmpX = x;
+		}
+		else {
+			text_putchar_win(tmpX, tmpY, str[i]);
+			tmpX++;
+		}
+		i++;
+	}
+}
+
 void	text_putstr_win(UINT8 x, UINT8 y, unsigned char *str) {
 /*	UINT8 i = 0;
 	UINT8 tmpX = x;
