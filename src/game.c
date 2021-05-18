@@ -15,10 +15,10 @@ void	game(s *fire, s*pl) {
 	perform_delay(1);
 }
 
-void	init_game(void) {
+void	init_game(s *fire) {
 
 	HIDE_BKG;
 	SHOW_SPRITES;
 	SPRITES_8x16;
-	init_map();
+	init_map(fire);
 }

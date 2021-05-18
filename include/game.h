@@ -13,18 +13,12 @@
 
 #include "../musics/gbt_player.h"
 
-
 #include "texts.h"
-#include "tileset_font.h"
+#include "font.h"
 #include "titleScreen.h"
-#include "titleMapScreen.h"
-#include "tilemap_splashscreen.h"
-#include "tileset_splashscreen.h"
-#include "creditsScreen.h"
-#include "creditsmap.h"
-
+#include "splashscreen.h"
+#include "credits.h"
 #include "kitchen.h"
-#include "kitchenmap.h"
 
 #include "fire.h"
 #include "player.h"
@@ -71,12 +65,12 @@ UINT8	perform_delay_joypad(UINT8 time);
 /* @void	init_game(void);		  */
 /*									  */
 /* initialize 1st map ans sprites	  */
-void	init_game(void);
+void	init_game(s *fire);
 
-/* @void	init_map(void);			  */
+/* @void	init_map(s *fire);		  */
 /*									  */
 /* initialize the 1st map of the game */
-void	init_map(void);
+void	init_map(s *fire);
 
 /* @void	game(void);				  */
 /*									  */
