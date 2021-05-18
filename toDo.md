@@ -4,11 +4,11 @@
 
 
 :radio_button: hall with a scroll (! the player moves with the screen limits)<br>
-:exclamation::radio_button: background collisions<br><br>
 :radio_button: animer la piece<br><br>
 :exclamation::radio_button: refacto notamment le feu qui est un sprite qui reste sur la map1<br><br>
 :radio_button: after splash screen: cinematic<br>
 
+:ballot_box_with_check: background collisions<br><br>
 :ballot_box_with_check: moving camera: ok<br>
 :ballot_box_with_check: after splash screen: credits<br>
 :ballot_box_with_check: creat and update the readme with sound credits (gbt-player + the sound)<br>
