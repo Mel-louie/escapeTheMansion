@@ -6,9 +6,9 @@
 :radio_button: hall with a scroll (! the player moves with the screen limits)<br>
 :radio_button: after splash screen: cinematic<br>
 :radio_button: faire un logo press A<br>
-:exclamation::exclamation::radio_button: corriger bug titlescreen<br>
 :exclamation::radio_button: animer la cuisine<br><br>
 
+:ballot_box_with_check: corriger bug titlescreen<br>
 :ballot_box_with_check: refacto notamment le feu qui est un sprite qui reste sur la map1<br>
 :ballot_box_with_check: background collisions<br>
 :ballot_box_with_check: moving camera: ok<br>
