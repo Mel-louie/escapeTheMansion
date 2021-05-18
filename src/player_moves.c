@@ -4,6 +4,8 @@
 #       ©H GRAY 2021    	 #
 #+/+/+/+/+/+/+/+/+/+/+/+/+/#*/
 
+#pragma bank 1
+
 #include "../include/game.h"
 
 // the numbers represent the byte where the
@@ -42,7 +44,7 @@ UINT8	can_player_move(INT8 dx, INT8 dy, s *pl) {
 	if ((pl->sprite_pos_world[0] + dx < 1) ||
 		(pl->sprite_pos_world[0] + dx == 36) ||
 		(pl->sprite_pos_world[1] + dy < 2) ||
-		(pl->sprite_pos_world[1] + dy == 18))
+		(pl->sprite_pos_world[1] + dy == 34))
 		return (0);
 
 // return a tile where the player can walk
@@ -73,6 +75,13 @@ void	move_player(INT8 dx, INT8 dy, s *pl, s *fire) {
 				bkg_XPosition += dx * 124;
 				move_bkg(bkg_XPosition, 0);
 				dx += dx *16;
+		}
+
+		if ((bkg_YPosition && dy == -1 && pl->sprite_pos_screen[1] == 2 * 8) ||
+			(bkg_YPosition < (16 - 10) * 16 && dy == 1 && pl->sprite_pos_screen[1] == 8 * 16)) {
+				bkg_YPosition += dy * 124;
+				move_bkg(0, bkg_YPosition);
+				dy += dy *16;
 		}
 
 		if (!flag) {
