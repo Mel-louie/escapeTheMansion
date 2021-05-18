@@ -68,7 +68,7 @@ void	text_putchar_win(UINT8 x, UINT8 y, unsigned char c) {
 }
 
 void	text_putstr_win(UINT8 x, UINT8 y, unsigned char *str) {
-	UINT8 i = 0;
+/*	UINT8 i = 0;
 	UINT8 tmpX = x;
 	UINT8 tmpY = y;
 
@@ -82,5 +82,34 @@ void	text_putstr_win(UINT8 x, UINT8 y, unsigned char *str) {
 			tmpX++;
 		}
 		i++;
+	}*/
+	UINT8 i = 0;
+	UINT8 tmpX = x;
+	UINT8 tmpY = y;
+	UINT8 newline = 3;
+
+	while (str[i]) {
+		if (str[i] == '\n') {
+			tmpY++;
+			tmpX = x;
+			newline--;
+		}
+		else {
+			text_putchar_win(tmpX, tmpY, str[i]);
+			tmpX++;
+		}
+		if (!newline) {
+			while (!(joypad() & J_A))
+				wait_vbl_done();
+			clear_message();
+			tmpX = 1;
+			tmpY = 1;
+			newline = 3;
+		}
+		i++;
+		perform_delay(2);
 	}
+
+	while (!(joypad() & J_A))
+		wait_vbl_done();
 }

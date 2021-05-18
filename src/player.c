@@ -150,7 +150,10 @@ void	player_init(s *pl, s *fire) {
 		pl->player_direction = PLAYER_DIRECTION_RIGHT;
 			move_player(+1, 0, pl, fire);
 	}
-	else if (fire->o == 1) {
+	if (joypad() & J_A) {
+		interact(pl, fire);
+	}
+	if (fire->o == 1) {
 		anim_fire(fire);
 	}
 }

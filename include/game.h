@@ -80,5 +80,9 @@ void	game(s *fire, s *pl);
 void	init_sprites(s *fire, s* pl);
 void	player_init(s *pl, s *fire);
 void	anim_fire(s *fire);
+void	interact(s *pl, s *fire);
+void	show_message(unsigned char *str, UINT8 player_x, UINT8 player_y);
+void	clear_message(void);
+void	clear_message(void);
 
 #endif
