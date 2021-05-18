@@ -4,7 +4,7 @@
 #define _KITCHEN_H
 
 extern const UINT8 TILESET_KITCHEN[];
-#define TILESET_KITCHEN_TILE_COUNT 75
+#define TILESET_KITCHEN_TILE_COUNT 78
 
 
 #endif
