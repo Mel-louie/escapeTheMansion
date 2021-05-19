@@ -73,14 +73,14 @@ void	move_player(INT8 dx, INT8 dy, s *pl, s *fire) {
 			if ((bkg_XPosition && dx == -1 && pl->sprite_pos_screen[0] == 2 * 8) ||
 			(bkg_XPosition < (16 - 10) * 16 && dx == 1 && pl->sprite_pos_screen[0] == 8 * 16)) {
 				bkg_XPosition += dx * 124;
-				move_bkg(bkg_XPosition, 0);
+				move_bkg(bkg_XPosition, bkg_YPosition);
 				dx += dx *16;
 			}
 		//move camera y
 			if ((bkg_YPosition && dy == -1 && pl->sprite_pos_screen[1] == 2 * 8) ||
 			(bkg_YPosition < (16 - 10) * 16 && dy == 1 && pl->sprite_pos_screen[1] == 8 * 16)) {
 				bkg_YPosition += dy * 124;
-				move_bkg(0, bkg_YPosition);
+				move_bkg(bkg_XPosition, bkg_YPosition);
 				dy += dy *16;
 			}
 
