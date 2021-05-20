@@ -6,32 +6,30 @@
 
 #include "../include/game.h"
 
-void	text_load_font(UINT8 code) {
-	if (code == 0) {
+void	text_load_font(UINT8 code)
+{
+	if (code == 0)
 		set_bkg_data(TEXT_OFFSET, FONT_COUNT, FONT_TILESET);
-	}
-	else if (code == 1) {
+	else if (code == 1)
 		set_bkg_data(TEXT_OFFSET, FONT_COUNT, FONT_TILESET_BLCK);
-	}
-	else if (code == 2) {
+	else if (code == 2)
 		set_bkg_data(TEXT_OFFSET, FONT_COUNT, FONT_BLCK);
-	}
 }
 
-void	text_putchar_win(UINT8 x, UINT8 y, unsigned char c) {
+void	text_putchar_win(UINT8 x, UINT8 y, unsigned char c)
+{
 	UINT16	tile = TEXT_CHAR_QS_MARK;
 
-	if (c >= 'A' && c <= 'Z') {
+	if (c >= 'A' && c <= 'Z')
 		tile = TEXT_CHAR_A + c - 'A';
-	}
-	else if (c >= 'a' && c <= 'z') {
+	else if (c >= 'a' && c <= 'z')
 		tile = TEXT_CHAR_A + c - 'a';
-	}
-	else if (c >= '0' && c <= '9') {
+	else if (c >= '0' && c <= '9')
 		tile = TEXT_CHAR_0 + c - '0';
-	}
-	else {
-		switch (c) {
+	else
+	{
+		switch (c)
+		{
 			case ' ':
 				tile = TEXT_CHAR_SPACE;
 				break ;
@@ -67,17 +65,21 @@ void	text_putchar_win(UINT8 x, UINT8 y, unsigned char c) {
 	set_win_tiles(x, y, 1, 1, &tile);
 }
 
-void	text_putstr_title(UINT8 x, UINT8 y, unsigned char *str) {
+void	text_putstr_title(UINT8 x, UINT8 y, unsigned char *str)
+{
 	UINT8 i = 0;
 	UINT8 tmpX = x;
 	UINT8 tmpY = y;
 
-	while (str[i]) {
-		if (str[i] == '\n') {
+	while (str[i])
+	{
+		if (str[i] == '\n')
+		{
 			tmpY++;
 			tmpX = x;
 		}
-		else {
+		else
+		{
 			text_putchar_win(tmpX, tmpY, str[i]);
 			tmpX++;
 		}
@@ -85,38 +87,28 @@ void	text_putstr_title(UINT8 x, UINT8 y, unsigned char *str) {
 	}
 }
 
-void	text_putstr_win(UINT8 x, UINT8 y, unsigned char *str) {
-/*	UINT8 i = 0;
-	UINT8 tmpX = x;
-	UINT8 tmpY = y;
-
-	while (str[i]) {
-		if (str[i] == '\n') {
-			tmpY++;
-			tmpX = x;
-		}
-		else {
-			text_putchar_win(tmpX, tmpY, str[i]);
-			tmpX++;
-		}
-		i++;
-	}*/
+void	text_putstr_win(UINT8 x, UINT8 y, unsigned char *str)
+{
 	UINT8 i = 0;
 	UINT8 tmpX = x;
 	UINT8 tmpY = y;
 	UINT8 newline = 3;
 
-	while (str[i]) {
-		if (str[i] == '\n') {
+	while (str[i])
+	{
+		if (str[i] == '\n')
+		{
 			tmpY++;
 			tmpX = x;
 			newline--;
 		}
-		else {
+		else
+		{
 			text_putchar_win(tmpX, tmpY, str[i]);
 			tmpX++;
 		}
-		if (!newline) {
+		if (!newline)
+		{
 			while (!(joypad() & J_A))
 				wait_vbl_done();
 			clear_message();

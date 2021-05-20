@@ -14,8 +14,8 @@ const UWORD palette_splash[] =
 	CGB_PAL(4, 4, 6), CGB_PAL(4, 4, 6), CGB_PAL(4, 4, 6), CGB_PAL(4, 4, 6),			//sweet green3			//12
 };
 
-void	clear_title_screen(void) {
-
+void	clear_title_screen(void)
+{
 	perform_delay(15);
 	BGP_REG = 0xf9;
 	set_bkg_palette( 0, 1, &palette_splash[4] );
@@ -32,8 +32,8 @@ void	clear_title_screen(void) {
 	HIDE_BKG;
 }
 
-void	splash_screen(void) {
-
+void	splash_screen(void)
+{
 	set_bkg_data(0, TILESET_TILE_COUNTSP, TILESETSP);
 	set_bkg_tiles(0, 0, TILEMAP_WIDTHSP, TILEMAP_HEIGHTSP, TILEMAPSP);
 	SHOW_BKG;
@@ -115,11 +115,10 @@ void	splash_screen(void) {
 
 	perform_delay(60);
 	HIDE_BKG;
-
 }
 
-void	title_screen(void) {
-
+void	title_screen(void)
+{
 	perform_delay(10);
 
 	set_bkg_data(0, TILESET_SCREEN_TILE_COUNT, TILESET_SCREEN);

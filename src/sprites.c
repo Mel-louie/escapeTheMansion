@@ -6,8 +6,8 @@
 
 #include "../include/game.h"
 
-void	anim_fire(s *fire) {
-
+void	anim_fire(s *fire)
+{
 	if (fire->animX <= 57)
 	{
 		set_sprite_tile(2, fire->animX = (fire->animX + 4));
@@ -15,18 +15,18 @@ void	anim_fire(s *fire) {
 		perform_delay(1);
 		//delay(10);
 	}
-	else {
+	else
+	{
 		fire->animX = 36;
 		fire->animY = fire->animX + 2;
 		set_sprite_tile(2, fire->animX);
 		set_sprite_tile(3, fire->animY);
 		perform_delay(1);
-		//delay(10);
 	}	
 }
 
-void	init_fire(s *fire) {
-
+void	init_fire(s *fire)
+{
 	fire->sprite_pos_world[0] = 7;
 	fire->sprite_pos_world[1] = 6;
 	fire->sprite_pos_screen[0] = fire->sprite_pos_world[0] * 8;
@@ -46,8 +46,8 @@ void	init_fire(s *fire) {
 	move_sprite(3, fire->sprite_pos_screen[0] + 8, fire->sprite_pos_screen[1]);
 }
 
-void	init_player(s *pl) {
-
+void	init_player(s *pl)
+{
 	pl->sprite_pos_world[0] = 12;
 	pl->sprite_pos_world[1] = 9;
 	pl->sprite_pos_screen[0] = pl->sprite_pos_world[0] * 8;
@@ -63,8 +63,8 @@ void	init_player(s *pl) {
 	move_sprite(1, pl->sprite_pos_screen[0] + 8, pl->sprite_pos_screen[1]);
 }
 
-void	init_sprites(s *fire, s *pl) {
-	
+void	init_sprites(s *fire, s *pl)
+{	
 	pl->o = 1;
 	init_fire(fire);
 	init_player(pl);

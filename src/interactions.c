@@ -16,23 +16,23 @@
  PLAYER_DIRECTION_RIGHT	2
  PLAYER_DIRECTION_LEFT	3*/
 
-void	interact(s *pl, s *fire) {
-
+void	interact(s *pl, s *fire)
+{
 	UINT8 cx = pl->sprite_pos_world[0];
 	UINT8 cy = pl->sprite_pos_world[1];
 	UINT8 tile;
 
-	if (pl->player_direction == 2) {
+	if (pl->player_direction == 2)
+	{
 		cx = cx + 1;
 		cy = cy - 1;
 	}
-	else if (pl->player_direction == 0) {
+	else if (pl->player_direction == 0)
 		cy = cy + 2;
-	}
-	else if (pl->player_direction == 1) {
+	else if (pl->player_direction == 1)
 		cy = cy - 2;
-	}
-	else if (pl->player_direction == 3) {
+	else if (pl->player_direction == 3)
+	{
 		cx = cx - 2;
 		cy = cy - 1;
 	}
@@ -41,8 +41,8 @@ void	interact(s *pl, s *fire) {
 
 	if (tile == 0x2C)
 		show_message("\nIt's the bin.\nIt smells like\nfish...", pl->sprite_pos_screen[0], pl->sprite_pos_screen[1]);
-	
-	if (pl->player_direction == 1 && tile == 0x25 ) {
+	if (pl->player_direction == 1 && tile == 0x25 )
+	{
 		show_message("\nThe fire seems\nto be animated\nby its own\nconsciousness.\n\nWeird.", pl->sprite_pos_screen[0], pl->sprite_pos_screen[1]);
 	}
 	//ex sprites interaction
