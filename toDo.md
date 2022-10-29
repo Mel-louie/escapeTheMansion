@@ -69,3 +69,9 @@ Optimizing For GBDK https://gbdev.io/guides/tools.html#optimizing-for-gbdk
     The technical reason behind that is that non-const values, especially arrays, are loaded to RAM from ROM in an extremely inefficient way. This takes up a LOT more ROM, and copies the value(s) to RAM when it's unneeded. (And the GB does not have enough RAM for that to be viable.)
     Don't use MBC1
     MBC1 is often assumed to be the simplest of all MBCs... but it has a quirk that adds some overhead every time ROM or SRAM bank switches are performed. MBC3 and MBC5 don't have this quirk, and don't add any complexity. Using MBC1 has no real use. (Let's not talk about MBC2, either.)
+
+
+	https://laroldsjubilantjunkyard.com/ great tuto
+
+
+	https://www.copetti.org/fr/writings/consoles/game-boy/
