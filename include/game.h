@@ -7,9 +7,9 @@
 #ifndef GAME_H
 # define GAME_H
 
-#include "../gbdk2020/include/gb/gb.h"
-#include "../gbdk2020/include/gb/cgb.h"
-#include "../gbdk2020/include/stdio.h"
+#include "../gbdk2020-3.1/include/gb/gb.h"
+#include "../gbdk2020-3.1/include/gb/cgb.h"
+#include "../gbdk2020-3.1/include/stdio.h"
 
 #include "../musics/gbt_player.h"
 
