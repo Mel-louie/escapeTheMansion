@@ -59,7 +59,6 @@ all:
 # compilation, work fine even if a wild warning 115 appears
 	@./gbdk2020-3.1/bin/lcc -Wa-l -Wm-yc -Wl-m -Wl-j -o escapeTheMansion.gb main.o splashscreen.o font.o titleScreen.o screens.o utils.o texts.o output.o gbt_player.o gbt_player_bank1.o sprites.o maps.o kitchen.o game.o s_fire.o s_player.o credits.o player.o interactions.o messages.o
 
-	@cp escapeTheMansion.gb escapeTheMansion-HTML/rom/game.gb
 	@echo $(_GREEN)"Done!"$(_END)
 
 clean:
